@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Free online grammar checker. Find common grammar, spelling and punctuation mistakes instantly with Wordly."
+    >
+
+    <meta
+        name="robots"
+        content="index, follow"
+    >
+
+    <meta
+        name="theme-color"
+        content="#08090d"
+    >
+
+    <title>Grammar Checker Online - Free Grammar & Spelling Checker | Wordly</title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+</head>
+
+
+<body>
+
+<div class="background">
+    <div class="glow glow-one"></div>
+    <div class="glow glow-two"></div>
+    <div class="grid"></div>
+</div>
+
+
+<header class="tool-header">
+
+    <a href="index.html" class="back-home">
+        ← Wordly
+    </a>
+
+    <div class="tool-title">
+
+        <span class="tool-label">
+            WRITING TOOL
+        </span>
+
+        <h1>
+            Grammar Checker
+        </h1>
+
+        <p>
+            Find common grammar, spelling and punctuation mistakes.
+        </p>
+
+    </div>
+
+</header>
+
+
+<main class="grammar-container">
+
+    <section class="grammar-editor">
+
+        <div class="editor-top">
+
+            <span>
+                Your text
+            </span>
+
+            <button
+                id="clearText"
+                class="clear-button"
+            >
+                Clear
+            </button>
+
+        </div>
+
+
+        <textarea
+            id="grammarInput"
+            placeholder="Paste or type your text here..."
+            spellcheck="false"
+        ></textarea>
+
+
+        <div class="editor-bottom">
+
+            <div class="text-stats">
+
+                <span>
+                    <strong id="wordCount">0</strong>
+                    words
+                </span>
+
+                <span>
+                    <strong id="characterCount">0</strong>
+                    characters
+                </span>
+
+            </div>
+
+
+            <button
+                id="checkGrammar"
+                class="check-button"
+            >
+                Check Writing ✦
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <section
+        id="resultsSection"
+        class="grammar-results hidden"
+    >
+
+        <div class="results-header">
+
+            <div>
+
+                <span class="tool-label">
+                    ANALYSIS
+                </span>
+
+                <h2>
+                    Writing issues
+                </h2>
+
+            </div>
+
+
+            <button
+                id="fixAll"
+                class="fix-all-button"
+            >
+                ✦ Fix All
+            </button>
+
+        </div>
+
+
+        <div
+            id="issueSummary"
+            class="issue-summary"
+        ></div>
+
+
+        <div
+            id="issuesList"
+            class="issues-list"
+        ></div>
+
+
+        <div class="corrected-area hidden" id="correctedArea">
+
+            <div class="corrected-header">
+
+                <span>
+                    Corrected text
+                </span>
+
+                <button
+                    id="copyCorrected"
+                    class="copy-button"
+                >
+                    Copy
+                </button>
+
+            </div>
+
+
+            <div
+                id="correctedText"
+                class="corrected-text"
+            ></div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<script src="grammar-checker.js"></script>
+
+</body>
+
+</html>
