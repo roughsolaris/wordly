@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://wordly-counteveryword.vercel.app/sitemap.xml

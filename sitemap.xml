@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+    <url>
+        <loc>https://wordly-counteveryword.vercel.app/</loc>
+    </url>
+
+    <url>
+        <loc>https://wordly-counteveryword.vercel.app/character-counter.html</loc>
+    </url>
+
+    <url>
+        <loc>https://wordly-counteveryword.vercel.app/keyword-counter.html</loc>
+    </url>
+
+    <url>
+        <loc>https://wordly-counteveryword.vercel.app/text-cleaner.html</loc>
+    </url>
+
+    <url>
+        <loc>https://wordly-counteveryword.vercel.app/case-converter.html</loc>
+    </url>
+
+</urlset>

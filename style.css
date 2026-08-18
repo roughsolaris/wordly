@@ -2270,3 +2270,36 @@ footer {
     }
 
 }
+.creator-footer {
+    width: 100%;
+    margin-top: 80px;
+    padding: 28px 20px 30px;
+    text-align: center;
+    font-size: 13px;
+    letter-spacing: 0.4px;
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.creator-footer a {
+    margin-left: 5px;
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.25s ease;
+}
+
+.creator-footer a:hover {
+    color: #fff;
+    text-shadow: 0 0 14px rgba(255, 255, 255, 0.45);
+}
+
+.creator-star {
+    display: inline-block;
+    margin-left: 7px;
+    color: rgba(255, 255, 255, 0.5);
+    transition: transform 0.3s ease;
+}
+
+.creator-footer:hover .creator-star {
+    transform: rotate(90deg) scale(1.15);
+}
