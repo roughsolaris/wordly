@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+name="viewport"
+content="width=device-width, initial-scale=1.0"
+>
+
+<meta
+name="description"
+content="Free online text cleaner. Remove extra spaces, blank lines and unnecessary formatting from your text."
+>
+
+<title>Text Cleaner — Wordly</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<div class="background">
+<div class="glow glow-one"></div>
+<div class="glow glow-two"></div>
+<div class="grid"></div>
+</div>
+
+
+<header class="navbar">
+
+<div class="nav-container">
+
+<a href="index.html" class="logo">
+<span class="logo-icon">W</span>
+<span>wordly</span>
+</a>
+
+<div class="nav-links">
+
+<a href="index.html">
+Counter
+</a>
+
+<a href="character-counter.html">
+Character Counter
+</a>
+
+<a href="case-converter.html">
+Case Converter
+</a>
+
+<a href="text-cleaner.html">
+Text Cleaner
+</a>
+
+</div>
+
+<button
+class="theme-button"
+id="themeButton"
+>
+☼
+</button>
+
+</div>
+
+</header>
+
+
+<main>
+
+
+<section class="hero">
+
+<div class="badge">
+<span class="status-dot"></span>
+Free • Fast • Clean
+</div>
+
+<h1>
+Clean your<br>
+<span>text.</span>
+</h1>
+
+<p class="hero-description">
+Remove extra spaces, blank lines and messy
+formatting from copied text.
+</p>
+
+</section>
+
+
+<section class="counter-section">
+
+<div class="counter-card">
+
+<div class="toolbar">
+
+<div class="toolbar-left">
+
+<span class="live-dot"></span>
+
+<span>
+Text cleaner
+</span>
+
+</div>
+
+
+<div class="toolbar-actions">
+
+<button
+class="tool-button"
+id="copyButton"
+>
+⧉ Copy
+</button>
+
+<button
+class="tool-button danger"
+id="clearButton"
+>
+× Clear
+</button>
+
+</div>
+
+</div>
+
+
+<div class="editor-wrapper">
+
+<textarea
+id="textInput"
+placeholder="Paste messy text here..."
+></textarea>
+
+</div>
+
+
+<div class="case-buttons">
+
+<button id="spacesButton">
+Remove extra spaces
+</button>
+
+<button id="linesButton">
+Remove blank lines
+</button>
+
+<button id="tabsButton">
+Remove tabs
+</button>
+
+<button id="allButton">
+Clean everything
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+
+<section class="features">
+
+<div class="section-heading">
+
+<span class="small-heading">
+TEXT CLEANER
+</span>
+
+<h2>
+Make messy text<br>
+clean again.
+</h2>
+
+</div>
+
+
+<div class="feature-grid">
+
+<div class="feature-card">
+
+<div class="feature-icon">
+✦
+</div>
+
+<h3>
+Remove spaces
+</h3>
+
+<p>
+Turn multiple consecutive spaces into a single space.
+</p>
+
+</div>
+
+
+<div class="feature-card">
+
+<div class="feature-icon">
+¶
+</div>
+
+<h3>
+Clean blank lines
+</h3>
+
+<p>
+Remove unnecessary empty lines from copied text.
+</p>
+
+</div>
+
+
+<div class="feature-card">
+
+<div class="feature-icon">
+↹
+</div>
+
+<h3>
+Remove tabs
+</h3>
+
+<p>
+Convert tab characters into normal spaces.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<section class="bottom-cta">
+
+<span class="small-heading">
+MORE TOOLS
+</span>
+
+<h2>
+Count your<br>
+clean text.
+</h2>
+
+<a
+href="index.html"
+class="cta-button"
+>
+Open Word Counter →
+</a>
+
+</section>
+
+
+</main>
+
+
+<footer>
+
+<div class="footer-container">
+
+<div class="footer-logo">
+
+<span class="logo-icon">
+W
+</span>
+
+<span>
+wordly
+</span>
+
+</div>
+
+<p>
+© <span id="year"></span> Wordly.
+</p>
+
+<div class="footer-links">
+<a href="#">Privacy</a>
+<a href="#">Terms</a>
+</div>
+
+</div>
+
+</footer>
+
+
+<div class="toast" id="toast">
+
+<span>✓</span>
+
+<span id="toastMessage">
+Done!
+</span>
+
+</div>
+
+
+<script src="text-cleaner.js"></script>
+
+</body>
+</html>
