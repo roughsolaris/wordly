@@ -2,332 +2,687 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta name="google-site-verification" content="esN3q-CJiBxwfUMxnGe8Wap32bv9t5BSEKlq-jad2Q8" />
 
     <meta
         name="description"
-        content="Wordly is a fast and beautiful free word counter. Count words, characters, sentences, paragraphs and reading time instantly."
+        content="Wordly is a free online word counter. Count words, characters, sentences, paragraphs and reading time instantly."
+    >
+
+    <meta
+        name="keywords"
+        content="word counter, free word counter, online word counter, character counter, writing tool"
     >
 
     <meta name="theme-color" content="#08090d">
 
-    <title>Wordly — Free Word Counter</title>
+    <title>Word Counter Online — Wordly</title>
 
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <!-- Animated background -->
-    <div class="background">
-        <div class="glow glow-one"></div>
-        <div class="glow glow-two"></div>
-        <div class="grid"></div>
-    </div>
+<div class="background">
+    <div class="glow glow-one"></div>
+    <div class="glow glow-two"></div>
+    <div class="grid"></div>
+</div>
 
-    <!-- Navigation -->
-    <header class="navbar">
-        <div class="nav-container">
 
-            <a href="#" class="logo">
-                <span class="logo-icon">W</span>
-                <span>wordly</span>
+<header class="navbar">
+
+    <div class="nav-container">
+
+        <a href="index.html" class="logo">
+            <span class="logo-icon">W</span>
+            <span>wordly</span>
+        </a>
+
+        <div class="nav-links">
+
+            <a href="#counter">
+                Counter
             </a>
 
-            <div class="nav-links">
-                <a href="#counter">Counter</a>
-                <a href="#features">Features</a>
+            <div class="tools-menu">
+
+                <button class="tools-button">
+                    Tools
+                    <span>⌄</span>
+                </button>
+
+                <div class="tools-dropdown">
+
+                    <a href="index.html">
+                        <span>🔢</span>
+                        Word Counter
+                    </a>
+
+                    <a href="character-counter.html">
+                        <span>🔤</span>
+                        Character Counter
+                    </a>
+
+                    <a href="case-converter.html">
+                        <span>↕</span>
+                        Case Converter
+                    </a>
+
+                    <a href="text-cleaner.html">
+                        <span>✦</span>
+                        Text Cleaner
+                    </a>
+
+                    <a href="keyword-counter.html">
+                        <span>⌕</span>
+                        Keyword Counter
+                    </a>
+
+                </div>
+
             </div>
 
-            <button class="theme-button" id="themeButton" aria-label="Toggle theme">
-                ☼
-            </button>
+            <a href="#features">
+                Features
+            </a>
 
         </div>
-    </header>
+
+        <button
+            class="theme-button"
+            id="themeButton"
+        >
+            ☼
+        </button>
+
+    </div>
+
+</header>
 
 
-    <!-- Main -->
-    <main>
+<main>
 
-        <!-- Hero -->
-        <section class="hero">
 
-            <div class="badge">
-                <span class="status-dot"></span>
-                Free • Fast • Private
+<section class="hero">
+
+    <div class="badge">
+        <span class="status-dot"></span>
+        Free • Fast • Private
+    </div>
+
+    <h1>
+        Count every word.<br>
+        <span>Say more.</span>
+    </h1>
+
+    <p class="hero-description">
+        A beautiful, distraction-free word counter for
+        writers, students, creators and everyone in between.
+    </p>
+
+</section>
+
+
+<section
+    class="counter-section"
+    id="counter"
+>
+
+    <div class="counter-card">
+
+        <div class="toolbar">
+
+            <div class="toolbar-left">
+
+                <span class="live-dot"></span>
+
+                <span>
+                    Live counter
+                </span>
+
             </div>
 
-            <h1>
-                Count every word.<br>
-                <span>Say more.</span>
-            </h1>
+            <div class="toolbar-actions">
 
-            <p class="hero-description">
-                A beautiful, distraction-free word counter for writers,
-                students, creators and everyone in between.
-            </p>
+                <button
+                    id="downloadButton"
+                    class="tool-button"
+                >
+                    <span>↓</span>
+                    Download
+                </button>
 
-        </section>
+                <button
+                    id="copyButton"
+                    class="tool-button"
+                >
+                    <span>⧉</span>
+                    Copy
+                </button>
+
+                <button
+                    id="clearButton"
+                    class="tool-button danger"
+                >
+                    <span>×</span>
+                    Clear
+                </button>
+
+            </div>
+
+        </div>
 
 
-        <!-- Counter -->
-        <section class="counter-section" id="counter">
+        <div class="editor-wrapper">
 
-            <div class="counter-card">
+            <textarea
+                id="textInput"
+                placeholder="Start typing or paste your text here..."
+                spellcheck="true"
+            ></textarea>
 
-                <!-- Toolbar -->
-                <div class="toolbar">
+            <div class="editor-footer">
 
-                    <div class="toolbar-left">
-                        <span class="live-dot"></span>
-                        <span>Live counter</span>
-                    </div>
+                <span>
+                    Your text stays in your browser.
+                </span>
 
-                    <div class="toolbar-actions">
+                <span id="characterLimit">
+                    0 / 10,000
+                </span>
 
-                        <button id="copyButton" class="tool-button">
-                            <span>⧉</span>
-                            Copy
-                        </button>
+            </div>
 
-                        <button id="clearButton" class="tool-button danger">
-                            <span>×</span>
-                            Clear
-                        </button>
+        </div>
 
-                    </div>
+
+        <div class="stats-grid">
+
+            <div class="stat-card">
+                <div class="stat-icon">Aa</div>
+
+                <div>
+                    <span class="stat-label">
+                        Words
+                    </span>
+
+                    <strong id="wordCount">
+                        0
+                    </strong>
+                </div>
+            </div>
+
+
+            <div class="stat-card">
+                <div class="stat-icon">#</div>
+
+                <div>
+                    <span class="stat-label">
+                        Characters
+                    </span>
+
+                    <strong id="characterCount">
+                        0
+                    </strong>
+                </div>
+            </div>
+
+
+            <div class="stat-card">
+                <div class="stat-icon">A</div>
+
+                <div>
+                    <span class="stat-label">
+                        No spaces
+                    </span>
+
+                    <strong id="characterNoSpaceCount">
+                        0
+                    </strong>
+                </div>
+            </div>
+
+
+            <div class="stat-card">
+                <div class="stat-icon">◉</div>
+
+                <div>
+                    <span class="stat-label">
+                        Sentences
+                    </span>
+
+                    <strong id="sentenceCount">
+                        0
+                    </strong>
+                </div>
+            </div>
+
+
+            <div class="stat-card">
+                <div class="stat-icon">¶</div>
+
+                <div>
+                    <span class="stat-label">
+                        Paragraphs
+                    </span>
+
+                    <strong id="paragraphCount">
+                        0
+                    </strong>
+                </div>
+            </div>
+
+
+            <div class="stat-card">
+                <div class="stat-icon">◷</div>
+
+                <div>
+                    <span class="stat-label">
+                        Reading time
+                    </span>
+
+                    <strong id="readingTime">
+                        0 min
+                    </strong>
+                </div>
+            </div>
+
+        </div>
+
+
+        <div class="counter-bottom">
+
+            <div class="time-info">
+                🎙
+                <span>
+                    Speaking time:
+                    <strong id="speakingTime">
+                        0 min
+                    </strong>
+                </span>
+            </div>
+
+
+            <div class="progress-container">
+
+                <div class="progress-label">
+
+                    <span>
+                        Character usage
+                    </span>
+
+                    <span id="progressText">
+                        0%
+                    </span>
 
                 </div>
 
+                <div class="progress-bar">
 
-                <!-- Text area -->
-                <div class="editor-wrapper">
-
-                    <textarea
-                        id="textInput"
-                        placeholder="Start typing or paste your text here..."
-                        spellcheck="true"
-                    ></textarea>
-
-                    <div class="editor-footer">
-
-                        <span id="placeholderTip">
-                            Your text stays in your browser.
-                        </span>
-
-                        <span id="characterLimit">
-                            0 / 10,000
-                        </span>
-
-                    </div>
-
-                </div>
-
-
-                <!-- Statistics -->
-                <div class="stats-grid">
-
-                    <div class="stat-card primary-stat">
-                        <div class="stat-icon">Aa</div>
-                        <div>
-                            <span class="stat-label">Words</span>
-                            <strong id="wordCount">0</strong>
-                        </div>
-                    </div>
-
-
-                    <div class="stat-card">
-                        <div class="stat-icon">#</div>
-                        <div>
-                            <span class="stat-label">Characters</span>
-                            <strong id="characterCount">0</strong>
-                        </div>
-                    </div>
-
-
-                    <div class="stat-card">
-                        <div class="stat-icon">A</div>
-                        <div>
-                            <span class="stat-label">No spaces</span>
-                            <strong id="characterNoSpaceCount">0</strong>
-                        </div>
-                    </div>
-
-
-                    <div class="stat-card">
-                        <div class="stat-icon">◉</div>
-                        <div>
-                            <span class="stat-label">Sentences</span>
-                            <strong id="sentenceCount">0</strong>
-                        </div>
-                    </div>
-
-
-                    <div class="stat-card">
-                        <div class="stat-icon">¶</div>
-                        <div>
-                            <span class="stat-label">Paragraphs</span>
-                            <strong id="paragraphCount">0</strong>
-                        </div>
-                    </div>
-
-
-                    <div class="stat-card">
-                        <div class="stat-icon">◷</div>
-                        <div>
-                            <span class="stat-label">Reading time</span>
-                            <strong id="readingTime">0 min</strong>
-                        </div>
-                    </div>
-
-                </div>
-
-
-                <!-- Bottom information -->
-                <div class="counter-bottom">
-
-                    <div class="time-info">
-                        <span>🎙</span>
-                        <span>
-                            Speaking time:
-                            <strong id="speakingTime">0 min</strong>
-                        </span>
-                    </div>
-
-
-                    <div class="progress-container">
-
-                        <div class="progress-label">
-                            <span>Character usage</span>
-                            <span id="progressText">0%</span>
-                        </div>
-
-                        <div class="progress-bar">
-                            <div
-                                class="progress-fill"
-                                id="progressFill"
-                            ></div>
-                        </div>
-
-                    </div>
+                    <div
+                        class="progress-fill"
+                        id="progressFill"
+                    ></div>
 
                 </div>
 
             </div>
 
-        </section>
+        </div>
+
+    </div>
+
+</section>
 
 
-        <!-- Features -->
-        <section class="features" id="features">
+<section class="features" id="features">
 
-            <div class="section-heading">
-                <span class="small-heading">WHY WORDLY</span>
+    <div class="section-heading">
 
-                <h2>
-                    Everything you need.<br>
-                    Nothing you don't.
-                </h2>
+        <span class="small-heading">
+            MORE FREE TOOLS
+        </span>
+
+        <h2>
+            More than a<br>
+            word counter.
+        </h2>
+
+    </div>
+
+
+    <div class="feature-grid">
+
+        <a
+            href="character-counter.html"
+            class="feature-card feature-link"
+        >
+
+            <div class="feature-icon">
+                🔤
             </div>
 
-
-            <div class="feature-grid">
-
-                <article class="feature-card">
-                    <div class="feature-icon">⚡</div>
-
-                    <h3>Instant results</h3>
-
-                    <p>
-                        Every word, character and sentence is counted
-                        instantly as you type.
-                    </p>
-                </article>
-
-
-                <article class="feature-card">
-                    <div class="feature-icon">🔒</div>
-
-                    <h3>Private by design</h3>
-
-                    <p>
-                        Your text doesn't need to leave your browser.
-                        Write freely without uploading your content.
-                    </p>
-                </article>
-
-
-                <article class="feature-card">
-                    <div class="feature-icon">◉</div>
-
-                    <h3>Works everywhere</h3>
-
-                    <p>
-                        Use Wordly on your phone, tablet or computer
-                        without installing anything.
-                    </p>
-                </article>
-
-            </div>
-
-        </section>
-
-
-        <!-- CTA -->
-        <section class="bottom-cta">
-
-            <div class="cta-glow"></div>
-
-            <span class="small-heading">READY WHEN YOU ARE</span>
-
-            <h2>
-                Your words.<br>
-                Counted perfectly.
-            </h2>
-
-            <a href="#counter" class="cta-button">
-                Start writing
-                <span>↓</span>
-            </a>
-
-        </section>
-
-    </main>
-
-
-    <!-- Footer -->
-    <footer>
-
-        <div class="footer-container">
-
-            <div class="footer-logo">
-                <span class="logo-icon">W</span>
-                <span>wordly</span>
-            </div>
+            <h3>
+                Character Counter
+            </h3>
 
             <p>
-                © <span id="year"></span> Wordly. Built for words.
+                Count characters with or without spaces,
+                plus words and sentences.
             </p>
 
-            <div class="footer-links">
-                <a href="#">Privacy</a>
-                <a href="#">Terms</a>
+        </a>
+
+
+        <a
+            href="case-converter.html"
+            class="feature-card feature-link"
+        >
+
+            <div class="feature-icon">
+                Aa
             </div>
+
+            <h3>
+                Case Converter
+            </h3>
+
+            <p>
+                Quickly convert text between uppercase,
+                lowercase, title case and more.
+            </p>
+
+        </a>
+
+
+        <a
+            href="text-cleaner.html"
+            class="feature-card feature-link"
+        >
+
+            <div class="feature-icon">
+                ✦
+            </div>
+
+            <h3>
+                Text Cleaner
+            </h3>
+
+            <p>
+                Remove unwanted spaces, blank lines and
+                formatting problems from your text.
+            </p>
+
+        </a>
+
+
+        <a
+            href="keyword-counter.html"
+            class="feature-card feature-link"
+        >
+
+            <div class="feature-icon">
+                ⌕
+            </div>
+
+            <h3>
+                Keyword Counter
+            </h3>
+
+            <p>
+                Discover the most frequently used words
+                in your text.
+            </p>
+
+        </a>
+
+
+        <div class="feature-card">
+
+            <div class="feature-icon">
+                ⚡
+            </div>
+
+            <h3>
+                Instant Results
+            </h3>
+
+            <p>
+                Everything updates instantly while
+                you type or paste.
+            </p>
 
         </div>
 
-    </footer>
+
+        <div class="feature-card">
+
+            <div class="feature-icon">
+                🔒
+            </div>
+
+            <h3>
+                Private
+            </h3>
+
+            <p>
+                Your text stays in your browser.
+                No account is required.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
 
 
-    <!-- Toast -->
-    <div class="toast" id="toast">
-        <span>✓</span>
-        <span id="toastMessage">Copied!</span>
+<section class="info-section">
+
+    <div class="info-content">
+
+        <span class="small-heading">
+            FREE ONLINE WORD COUNTER
+        </span>
+
+        <h2>
+            How many words<br>
+            are in your text?
+        </h2>
+
+        <p>
+            Wordly is a simple and fast online word counter
+            designed for students, writers, bloggers,
+            social media creators and anyone who needs
+            to keep track of their text length.
+        </p>
+
+        <p>
+            Type or paste your text into the editor and
+            Wordly automatically calculates your word count,
+            character count, sentences, paragraphs and
+            estimated reading time.
+        </p>
+
+        <p>
+            There is no registration and no software to
+            install. Everything happens instantly in your
+            browser.
+        </p>
+
+    </div>
+
+</section>
+
+
+<section class="faq-section">
+
+    <div class="section-heading">
+
+        <span class="small-heading">
+            FAQ
+        </span>
+
+        <h2>
+            Frequently asked<br>
+            questions.
+        </h2>
+
     </div>
 
 
-    <script src="script.js"></script>
+    <div class="faq-list">
+
+        <details>
+            <summary>
+                What is a word counter?
+                <span>+</span>
+            </summary>
+
+            <p>
+                A word counter counts the number of words
+                in a piece of text. Wordly also provides
+                character, sentence, paragraph and reading
+                time statistics.
+            </p>
+
+        </details>
+
+
+        <details>
+            <summary>
+                Is Wordly free?
+                <span>+</span>
+            </summary>
+
+            <p>
+                Yes. Wordly is designed to provide free
+                online writing tools without requiring
+                an account.
+            </p>
+
+        </details>
+
+
+        <details>
+            <summary>
+                Does Wordly save my text?
+                <span>+</span>
+            </summary>
+
+            <p>
+                The counter processes your text directly
+                in your browser. Your text does not need
+                to be uploaded to a server for counting.
+            </p>
+
+        </details>
+
+
+        <details>
+            <summary>
+                How is reading time calculated?
+                <span>+</span>
+            </summary>
+
+            <p>
+                Reading time is estimated using an average
+                reading speed of approximately 200 words
+                per minute.
+            </p>
+
+        </details>
+
+    </div>
+
+</section>
+
+
+<section class="bottom-cta">
+
+    <span class="small-heading">
+        READY WHEN YOU ARE
+    </span>
+
+    <h2>
+        Your words.<br>
+        Counted perfectly.
+    </h2>
+
+    <a
+        href="#counter"
+        class="cta-button"
+    >
+        Start writing
+        <span>↓</span>
+    </a>
+
+</section>
+
+
+</main>
+
+
+<footer>
+
+    <div class="footer-container">
+
+        <div class="footer-logo">
+
+            <span class="logo-icon">
+                W
+            </span>
+
+            <span>
+                wordly
+            </span>
+
+        </div>
+
+
+        <p>
+            ©
+            <span id="year"></span>
+            Wordly. Built for words.
+        </p>
+
+
+        <div class="footer-links">
+
+            <a href="#">
+                Privacy
+            </a>
+
+            <a href="#">
+                Terms
+            </a>
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+<div class="toast" id="toast">
+
+    <span>✓</span>
+
+    <span id="toastMessage">
+        Done!
+    </span>
+
+</div>
+
+
+<script src="script.js"></script>
 
 </body>
 </html>

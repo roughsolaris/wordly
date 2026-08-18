@@ -1,14 +1,16 @@
-/* =========================================
-   WORDLY
-   Main JavaScript
-========================================= */
+const textInput =
+    document.getElementById("textInput");
 
-const textInput = document.getElementById("textInput");
+const wordCount =
+    document.getElementById("wordCount");
 
-const wordCount = document.getElementById("wordCount");
-const characterCount = document.getElementById("characterCount");
+const characterCount =
+    document.getElementById("characterCount");
+
 const characterNoSpaceCount =
-    document.getElementById("characterNoSpaceCount");
+    document.getElementById(
+        "characterNoSpaceCount"
+    );
 
 const sentenceCount =
     document.getElementById("sentenceCount");
@@ -37,6 +39,9 @@ const copyButton =
 const clearButton =
     document.getElementById("clearButton");
 
+const downloadButton =
+    document.getElementById("downloadButton");
+
 const themeButton =
     document.getElementById("themeButton");
 
@@ -50,80 +55,66 @@ const year =
     document.getElementById("year");
 
 
-/* =========================================
-   SETTINGS
-========================================= */
-
 const MAX_CHARACTERS = 10000;
 
-const WORDS_PER_MINUTE_READING = 200;
+const READING_SPEED = 200;
 
-const WORDS_PER_MINUTE_SPEAKING = 130;
+const SPEAKING_SPEED = 130;
 
-
-/* =========================================
-   COUNT TEXT
-========================================= */
 
 function analyzeText() {
 
-    const text = textInput.value;
+    const text =
+        textInput.value;
 
-    const trimmedText = text.trim();
+    const trimmed =
+        text.trim();
 
 
-    /* Words */
+    const characters =
+        text.length;
+
+
+    const noSpaces =
+        text.replace(/\s/g, "").length;
+
 
     let words = 0;
 
-    if (trimmedText.length > 0) {
+    if (trimmed) {
 
-        words = trimmedText
-            .split(/\s+/)
-            .filter(Boolean)
-            .length;
+        words =
+            trimmed
+                .split(/\s+/)
+                .filter(Boolean)
+                .length;
 
     }
 
 
-    /* Characters */
-
-    const characters = text.length;
-
-
-    /* Characters without spaces */
-
-    const charactersWithoutSpaces =
-        text.replace(/\s/g, "").length;
-
-
-    /* Sentences */
-
     let sentences = 0;
 
-    if (trimmedText.length > 0) {
+    if (trimmed) {
 
-        const sentenceMatches =
-            trimmedText.match(
+        const matches =
+            trimmed.match(
                 /[^.!?]+[.!?]+(?=\s|$)|[^.!?]+$/g
             );
 
         sentences =
-            sentenceMatches
-                ? sentenceMatches.length
+            matches
+                ? matches.length
                 : 0;
 
     }
 
 
-    /* Paragraphs */
-
     let paragraphs = 0;
 
-    if (trimmedText.length > 0) {
+    if (trimmed) {
 
         paragraphs =
-            trimmedText
+            trimmed
                 .split(/\n\s*\n/)
                 .filter(Boolean)
                 .length;
@@ -131,19 +122,12 @@ function analyzeText() {
     }
 
 
-    /* Reading time */
+    const reading =
+        words / READING_SPEED;
 
-    const readingMinutes =
-        words / WORDS_PER_MINUTE_READING;
+    const speaking =
+        words / SPEAKING_SPEED;
 
-
-    /* Speaking time */
-
-    const speakingMinutes =
-        words / WORDS_PER_MINUTE_SPEAKING;
-
-
-    /* Update UI */
 
     wordCount.textContent =
         words.toLocaleString();
@@ -152,7 +136,7 @@ function analyzeText() {
         characters.toLocaleString();
 
     characterNoSpaceCount.textContent =
-        charactersWithoutSpaces.toLocaleString();
+        noSpaces.toLocaleString();
 
     sentenceCount.textContent =
         sentences.toLocaleString();
@@ -160,29 +144,23 @@ function analyzeText() {
     paragraphCount.textContent =
         paragraphs.toLocaleString();
 
-
-    /* Time formatting */
-
     readingTime.textContent =
-        formatTime(readingMinutes);
+        formatTime(reading);
 
     speakingTime.textContent =
-        formatTime(speakingMinutes);
+        formatTime(speaking);
 
-
-    /* Character limit */
 
     characterLimit.textContent =
         `${characters.toLocaleString()} / ${MAX_CHARACTERS.toLocaleString()}`;
 
 
-    /* Progress */
-
     const percentage =
         Math.min(
-            (characters / MAX_CHARACTERS) * 100,
+            characters / MAX_CHARACTERS * 100,
             100
         );
+
 
     progressFill.style.width =
         `${percentage}%`;
@@ -191,14 +169,13 @@ function analyzeText() {
         `${Math.round(percentage)}%`;
 
 
-    /* Character limit warning */
-
-    if (characters >= MAX_CHARACTERS) {
+    if (characters > MAX_CHARACTERS) {
 
         textInput.value =
-            text.substring(0, MAX_CHARACTERS);
-
-        showToast("Character limit reached");
+            text.substring(
+                0,
+                MAX_CHARACTERS
+            );
 
         analyzeText();
 
@@ -206,10 +183,6 @@ function analyzeText() {
 
 }
 
-
-/* =========================================
-   FORMAT TIME
-========================================= */
 
 function formatTime(minutes) {
 
@@ -219,35 +192,31 @@ function formatTime(minutes) {
 
     if (minutes < 1) {
 
-        const seconds =
-            Math.ceil(minutes * 60);
-
-        return `${seconds} sec`;
+        return `${Math.ceil(
+            minutes * 60
+        )} sec`;
 
     }
 
-    const wholeMinutes =
+
+    const mins =
         Math.floor(minutes);
 
     const seconds =
         Math.round(
-            (minutes - wholeMinutes) * 60
+            (minutes - mins) * 60
         );
 
+
     if (seconds === 0) {
-
-        return `${wholeMinutes} min`;
-
+        return `${mins} min`;
     }
 
-    return `${wholeMinutes}m ${seconds}s`;
+
+    return `${mins}m ${seconds}s`;
 
 }
 
-
-/* =========================================
-   TEXT INPUT
-========================================= */
 
 textInput.addEventListener(
     "input",
@@ -255,38 +224,40 @@ textInput.addEventListener(
 );
 
 
-/* =========================================
-   COPY
-========================================= */
-
 copyButton.addEventListener(
     "click",
     async () => {
 
-        const text =
-            textInput.value;
+        if (!textInput.value.trim()) {
 
-        if (!text.trim()) {
-
-            showToast("Nothing to copy");
+            showToast(
+                "Nothing to copy"
+            );
 
             return;
 
         }
 
+
         try {
 
-            await navigator.clipboard.writeText(text);
+            await navigator.clipboard.writeText(
+                textInput.value
+            );
 
-            showToast("Text copied!");
+            showToast(
+                "Text copied!"
+            );
 
-        } catch (error) {
+        } catch {
 
             textInput.select();
 
             document.execCommand("copy");
 
-            showToast("Text copied!");
+            showToast(
+                "Text copied!"
+            );
 
         }
 
@@ -294,21 +265,9 @@ copyButton.addEventListener(
 );
 
 
-/* =========================================
-   CLEAR
-========================================= */
-
 clearButton.addEventListener(
     "click",
     () => {
-
-        if (!textInput.value) {
-
-            showToast("Already empty");
-
-            return;
-
-        }
 
         textInput.value = "";
 
@@ -316,15 +275,62 @@ clearButton.addEventListener(
 
         textInput.focus();
 
-        showToast("Text cleared");
+        showToast(
+            "Text cleared"
+        );
 
     }
 );
 
 
-/* =========================================
-   TOAST
-========================================= */
+downloadButton.addEventListener(
+    "click",
+    () => {
+
+        if (!textInput.value.trim()) {
+
+            showToast(
+                "Nothing to download"
+            );
+
+            return;
+
+        }
+
+
+        const blob =
+            new Blob(
+                [textInput.value],
+                {
+                    type: "text/plain"
+                }
+            );
+
+
+        const url =
+            URL.createObjectURL(blob);
+
+
+        const link =
+            document.createElement("a");
+
+        link.href = url;
+
+        link.download =
+            "wordly-text.txt";
+
+        link.click();
+
+
+        URL.revokeObjectURL(url);
+
+        showToast(
+            "Text downloaded!"
+        );
+
+    }
+);
+
 
 let toastTimer;
 
@@ -335,12 +341,18 @@ function showToast(message) {
 
     toast.classList.add("show");
 
+
     clearTimeout(toastTimer);
+
 
     toastTimer =
         setTimeout(
             () => {
-                toast.classList.remove("show");
+
+                toast.classList.remove(
+                    "show"
+                );
+
             },
             2200
         );
@@ -348,17 +360,15 @@ function showToast(message) {
 }
 
 
-/* =========================================
-   THEME BUTTON
-========================================= */
-
 let lightMode = false;
 
 themeButton.addEventListener(
     "click",
     () => {
 
-        lightMode = !lightMode;
+        lightMode =
+            !lightMode;
+
 
         if (lightMode) {
 
@@ -392,9 +402,12 @@ themeButton.addEventListener(
                 "#454956"
             );
 
-            themeButton.textContent = "☾";
+            themeButton.textContent =
+                "☾";
 
-            showToast("Light mode");
+            showToast(
+                "Light mode"
+            );
 
         } else {
 
@@ -428,9 +441,12 @@ themeButton.addEventListener(
                 "#aeb3c2"
             );
 
-            themeButton.textContent = "☼";
+            themeButton.textContent =
+                "☼";
 
-            showToast("Dark mode");
+            showToast(
+                "Dark mode"
+            );
 
         }
 
@@ -438,16 +454,8 @@ themeButton.addEventListener(
 );
 
 
-/* =========================================
-   YEAR
-========================================= */
-
 year.textContent =
     new Date().getFullYear();
 
-
-/* =========================================
-   INITIALIZE
-========================================= */
 
 analyzeText();
